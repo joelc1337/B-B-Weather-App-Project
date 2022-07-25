@@ -1,0 +1,11 @@
+A website that displays basic weather data using an api. It has a black and blue color theme.
+
+Data Display Requirements:
+
+Humidity
+Temperature (with toggle in F or C)
+Air Quality
+Wind Speed/Direction
+Sunrise/Sunset Hours
+Precipiation Chance
+7 day forecast
