@@ -38,6 +38,23 @@ function renderWeatherData(data){
 
         card.querySelector("h3").innerHTML = weekday;
         card.querySelector("span").innerHTML = Math.floor(tempeFarenheit);
+
+        forecast = data.list[i].weather[0].main;
+        console.log(forecast);
+
+        switch(forecast){
+            case "Clear":
+                card.querySelector("i").classList.add("wi-day-sunny");
+            break;
+            case "Clouds":
+                card.querySelector("i").classList.add("wi-cloudy");
+            break;
+            case "Rain":
+                card.querySelector("i").classList.add("wi-rain");
+            break;
+        }
+
+        
     }
 
 
