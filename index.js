@@ -32,8 +32,12 @@ function renderWeatherData(data){
     for(let i = 0; i <= 39; i+=8){
         var card = document.querySelector(`#d${i/8}`)
         const weekday = convertDate(data.list[i].dt);
-    
-        card.querySelector("h3").innerHTML = weekday
+        const tempKelvin = data.list[i].main.temp;
+
+        const tempeFarenheit = ((tempKelvin-273.15)*1.8)+32 // temperature in farenheit
+
+        card.querySelector("h3").innerHTML = weekday;
+        card.querySelector("span").innerHTML = Math.floor(tempeFarenheit);
     }
 
 
