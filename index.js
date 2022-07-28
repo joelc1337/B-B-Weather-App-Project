@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     retrieveKey();
-
+    // console.log(convertDate(1658977200))
 });
 
 function retrieveKey(){
@@ -22,6 +22,25 @@ function retrieveLocation(key){
 function retrieveWeatherData(lat,long,key){
     fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=${key}`)
     .then((response) => response.json())
-    .then((data) => console.log(data))
+    .then((data) => renderWeatherData(data))
 }
-// api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
+
+function renderWeatherData(data){
+
+    console.log(data)
+    
+    for(let i = 0; i <= 39; i+=8){
+        var card = document.querySelector(`#d${i/8}`)
+        const weekday = convertDate(data.list[i].dt);
+    
+        card.querySelector("h3").innerHTML = weekday
+    }
+
+
+
+}
+
+function convertDate(timestamp){
+    const date = new Date(timestamp * 1000);
+    return date.toLocaleString('default', {weekday:'long'});
+}
